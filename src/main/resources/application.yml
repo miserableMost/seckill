@@ -1,0 +1,39 @@
+server:
+  port: 8089
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://118.89.190.240:3306/babytun?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&allowMultiQueries=true&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: yourpassword
+  redis:
+    database: 2
+    # Redis\u670D\u52A1\u5668\u5730\u5740
+    host: 118.89.190.240
+    # Redis\u670D\u52A1\u5668\u8FDE\u63A5\u7AEF\u53E3
+    port: 6379
+    # Redis\u670D\u52A1\u5668\u8FDE\u63A5\u5BC6\u7801\uFF08\u9ED8\u8BA4\u4E3A\u7A7A\uFF09
+    jedis:
+      pool:
+        max-active: 100
+        max-idle: 100
+        min-idle: 10
+        max-wait: 1000ms
+    password: licong
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+    listener:
+      simple:
+        #定义消费者最多同时处理10个消息
+        prefetch: 10
+        #消息手动确认
+        acknowledge-mode: manual
+    virtual-host: /
+mybatis:
+  mapper-locations: classpath:/mapper/*.xml
+  #\u8F6C\u6362\u6570\u636E\u5E93\u9A7C\u5CF0\u6807\u8BC6
+  configuration:
+    map-underscore-to-camel-case: true
